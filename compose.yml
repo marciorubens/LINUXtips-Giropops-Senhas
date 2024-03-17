@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  giropops-senhas:
+    image: marciorubens/linuxtips-giropops-senhas
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+
+  redis:
+    container_name: redis
+    image: redis:7.2
+
+networks:
+  redis-net:
